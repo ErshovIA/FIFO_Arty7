@@ -1,0 +1,5 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Games/Verilog/11_sem/FIFO_Arty7/src/MyFIFO.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module MyFIFO
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Games/Verilog/11_sem/FIFO_Arty7/src/FIFO_test.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module FIFO_test
+WARNING: [VRFC 10-2654] begin/end is required for generate-for in this mode of verilog [D:/Games/Verilog/11_sem/FIFO_Arty7/src/FIFO_test.v:48]

@@ -37,7 +37,7 @@ module MyFIFO(  input wire clk,                                 //
     genvar i;
     
     generate                                                        // сдвигаем все заполненные регистры на один влево
-        for (i=0; i < `FIFO_VOLUME-1; i=i+1) begin
+        for (i=0; i < `FIFO_VOLUME-1; i=i+1) begin                  // нельзя i < `FIFO_VOLUME из-за [i+1]
             always @(posedge clk) begin                           
                 if (rst) begin
                     FIFO_array[i] <= `BIT_DEPTH'd0;
@@ -60,6 +60,7 @@ module MyFIFO(  input wire clk,                                 //
   
     always @(posedge clk, posedge rst) begin                // reset      
         if (rst) begin
+            FIFO_array[`FIFO_VOLUME-1] <= `BIT_DEPTH'd0;        // отдельно обнуляем последний член массива
             FIFO_tail_index <= `FIFO_VOLUME_BIT_DEPTH'd0;
             value_to_read <= `BIT_DEPTH'd0;
         end 
