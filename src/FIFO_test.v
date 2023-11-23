@@ -44,8 +44,9 @@ module FIFO_test;
     
     genvar j;
     generate
-        for (j=0; j<`FIFO_VOLUME;j=j+1)
+        for (j=0; j<`FIFO_VOLUME;j=j+1) begin
             assign array[j] = uut.FIFO_array[j];  
+        end
     endgenerate
     
     

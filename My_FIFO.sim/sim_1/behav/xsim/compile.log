@@ -1,6 +1,18 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Games/Verilog/11_sem/FIFO_Arty7/src/FIFO_wrapper.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module MyFIFO
+WARNING: [VRFC 10-3507] macro 'BIT_DEPTH' redefined [D:/Games/Verilog/11_sem/FIFO_Arty7/src/enable_signals_organiser.v:21]
+INFO: [VRFC 10-311] analyzing module enable_signals_organiser
+INFO: [VRFC 10-311] analyzing module FIFO_wrapper
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Games/Verilog/11_sem/FIFO_Arty7/src/MyFIFO.v" into library xil_defaultlib
+WARNING: [VRFC 10-3507] macro 'BIT_DEPTH' redefined [D:/Games/Verilog/11_sem/FIFO_Arty7/src/MyFIFO.v:22]
+INFO: [VRFC 10-311] analyzing module MyFIFO
+WARNING: [VRFC 10-3609] overwriting previous definition of module 'MyFIFO' [D:/Games/Verilog/11_sem/FIFO_Arty7/src/MyFIFO.v:25]
 INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Games/Verilog/11_sem/FIFO_Arty7/src/enable_signals_organiser.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module enable_signals_organiser
-INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Games/Verilog/11_sem/FIFO_Arty7/src/synchr_test.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module enable_signals_organiser
 WARNING: [VRFC 10-3609] overwriting previous definition of module 'enable_signals_organiser' [D:/Games/Verilog/11_sem/FIFO_Arty7/src/enable_signals_organiser.v:23]
-INFO: [VRFC 10-311] analyzing module synchr_test
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Games/Verilog/11_sem/FIFO_Arty7/src/FIFO_wrapper_test.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module MyFIFO
+INFO: [VRFC 10-311] analyzing module enable_signals_organiser
+INFO: [VRFC 10-311] analyzing module FIFO_wrapper
+WARNING: [VRFC 10-3609] overwriting previous definition of module 'FIFO_wrapper' [D:/Games/Verilog/11_sem/FIFO_Arty7/src/FIFO_wrapper.v:24]
+INFO: [VRFC 10-311] analyzing module FIFO_wrapper_test
