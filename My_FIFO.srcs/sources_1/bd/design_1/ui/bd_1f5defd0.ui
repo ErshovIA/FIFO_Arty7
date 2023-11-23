@@ -1,0 +1,19 @@
+{
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0.19  2019-03-26 bk=1.5019 VDI=41 GEI=35 GUI=JA:9.0 non-TLS
+#  -string -flagsOSRD
+preplace port clk_0 -pg 1 -lvl 0 -x 0 -y 100 -defaultsOSRD
+preplace port rst_0 -pg 1 -lvl 0 -x 0 -y 80 -defaultsOSRD
+preplace inst MyFIFO_0 -pg 1 -lvl 2 -x 490 -y 100 -defaultsOSRD
+preplace inst vio_0 -pg 1 -lvl 1 -x 160 -y 160 -defaultsOSRD
+preplace netloc MyFIFO_0_value_to_read 1 0 3 20 240 NJ 240 660
+preplace netloc vio_0_probe_out0 1 1 1 300 100n
+preplace netloc vio_0_probe_out1 1 1 1 310 120n
+preplace netloc vio_0_probe_out2 1 1 1 320 140n
+preplace netloc clk_0_1 1 0 2 20 60 NJ
+preplace netloc rst_0_1 1 0 2 NJ 80 NJ
+levelinfo -pg 1 0 160 490 680
+pagesize -pg 1 -db -bbox -sgen -90 0 680 250
+"
+}
+

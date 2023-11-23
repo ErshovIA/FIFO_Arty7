@@ -1,11 +1,156 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x0",
+      "boundary_crc": "0xEDAC9A23FDF7D136",
+      "device": "xc7a35ticsg324-1L",
       "name": "design_1",
       "synth_flow_mode": "Hierarchical",
-      "tool_version": "2019.1"
+      "tool_version": "2019.1",
+      "validated": "true"
     },
-    "design_tree": {}
+    "design_tree": {
+      "MyFIFO_0": "",
+      "vio_0": ""
+    },
+    "ports": {
+      "clk_0": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "ASSOCIATED_RESET": {
+            "value": "rst_0",
+            "value_src": "default"
+          },
+          "CLK_DOMAIN": {
+            "value": "design_1_clk_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.000",
+            "value_src": "default"
+          }
+        }
+      },
+      "rst_0": {
+        "type": "rst",
+        "direction": "I",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_LOW",
+            "value_src": "default"
+          }
+        }
+      }
+    },
+    "components": {
+      "MyFIFO_0": {
+        "vlnv": "xilinx.com:module_ref:MyFIFO:1.0",
+        "xci_name": "design_1_MyFIFO_0_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "MyFIFO",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "rst",
+                "value_src": "constant"
+              },
+              "CLK_DOMAIN": {
+                "value": "design_1_clk_0",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "rst": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "enable_read": {
+            "direction": "I"
+          },
+          "enable_write": {
+            "direction": "I"
+          },
+          "value_to_write": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "value_to_read": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          }
+        }
+      },
+      "vio_0": {
+        "vlnv": "xilinx.com:ip:vio:3.0",
+        "xci_name": "design_1_vio_0_0",
+        "parameters": {
+          "C_NUM_PROBE_OUT": {
+            "value": "3"
+          },
+          "C_PROBE_OUT2_WIDTH": {
+            "value": "32"
+          }
+        }
+      }
+    },
+    "nets": {
+      "MyFIFO_0_value_to_read": {
+        "ports": [
+          "MyFIFO_0/value_to_read",
+          "vio_0/probe_in0"
+        ]
+      },
+      "vio_0_probe_out0": {
+        "ports": [
+          "vio_0/probe_out0",
+          "MyFIFO_0/enable_read"
+        ]
+      },
+      "vio_0_probe_out1": {
+        "ports": [
+          "vio_0/probe_out1",
+          "MyFIFO_0/enable_write"
+        ]
+      },
+      "vio_0_probe_out2": {
+        "ports": [
+          "vio_0/probe_out2",
+          "MyFIFO_0/value_to_write"
+        ]
+      },
+      "clk_0_1": {
+        "ports": [
+          "clk_0",
+          "vio_0/clk",
+          "MyFIFO_0/clk"
+        ]
+      },
+      "rst_0_1": {
+        "ports": [
+          "rst_0",
+          "MyFIFO_0/rst"
+        ]
+      }
+    }
   }
 }
