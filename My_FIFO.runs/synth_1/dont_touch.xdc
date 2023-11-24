@@ -3,13 +3,13 @@
 
 # XDC: D:/Games/Verilog/11_sem/FIFO_Arty7/src/myConstraints.xdc
 
-# Block Designs: D:/Games/Verilog/11_sem/FIFO_Arty7/block_designs/FIFO_wrapped_VIO/FIFO_wrapped_VIO.bd
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==FIFO_wrapped_VIO || ORIG_REF_NAME==FIFO_wrapped_VIO} -quiet] -quiet
+# Block Designs: D:/Games/Verilog/11_sem/FIFO_Arty7/block_designs/MyFIFO_vio/MyFIFO_vio.bd
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==MyFIFO_vio || ORIG_REF_NAME==MyFIFO_vio} -quiet] -quiet
 
-# IP: d:/Games/Verilog/11_sem/FIFO_Arty7/block_designs/FIFO_wrapped_VIO/ip/FIFO_wrapped_VIO_FIFO_wrapper_0_0/FIFO_wrapped_VIO_FIFO_wrapper_0_0.xci
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==FIFO_wrapped_VIO_FIFO_wrapper_0_0 || ORIG_REF_NAME==FIFO_wrapped_VIO_FIFO_wrapper_0_0} -quiet] -quiet
+# IP: d:/Games/Verilog/11_sem/FIFO_Arty7/block_designs/MyFIFO_vio/ip/MyFIFO_vio_FIFO_wrapper_0_0/MyFIFO_vio_FIFO_wrapper_0_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==MyFIFO_vio_FIFO_wrapper_0_0 || ORIG_REF_NAME==MyFIFO_vio_FIFO_wrapper_0_0} -quiet] -quiet
 
-# IP: d:/Games/Verilog/11_sem/FIFO_Arty7/block_designs/FIFO_wrapped_VIO/ip/FIFO_wrapped_VIO_vio_0_0/FIFO_wrapped_VIO_vio_0_0.xci
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==FIFO_wrapped_VIO_vio_0_0 || ORIG_REF_NAME==FIFO_wrapped_VIO_vio_0_0} -quiet] -quiet
+# IP: d:/Games/Verilog/11_sem/FIFO_Arty7/block_designs/MyFIFO_vio/ip/MyFIFO_vio_vio_0_0/MyFIFO_vio_vio_0_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==MyFIFO_vio_vio_0_0 || ORIG_REF_NAME==MyFIFO_vio_vio_0_0} -quiet] -quiet
 
-# XDC: D:/Games/Verilog/11_sem/FIFO_Arty7/block_designs/FIFO_wrapped_VIO/FIFO_wrapped_VIO_ooc.xdc
+# XDC: D:/Games/Verilog/11_sem/FIFO_Arty7/block_designs/MyFIFO_vio/MyFIFO_vio_ooc.xdc

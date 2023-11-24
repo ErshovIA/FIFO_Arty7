@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a35ticsg324-1L" LaunchTime="1700735556">
-  <File Type="PA-TCL" Name="MyFIFO.tcl"/>
-  <File Type="REPORTS-TCL" Name="MyFIFO_reports.tcl"/>
-  <File Type="RDS-RDS" Name="MyFIFO.vds"/>
-  <File Type="RDS-UTIL" Name="MyFIFO_utilization_synth.rpt"/>
-  <File Type="RDS-UTIL-PB" Name="MyFIFO_utilization_synth.pb"/>
-  <File Type="RDS-DCP" Name="MyFIFO.dcp"/>
+<GenRun Id="synth_1" LaunchPart="xc7a35ticsg324-1L" LaunchTime="1700816507">
+  <File Type="PA-TCL" Name="MyFIFO_vio_wrapper.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="MyFIFO_vio_wrapper_drc_synth.rpt"/>
+  <File Type="REPORTS-TCL" Name="MyFIFO_vio_wrapper_reports.tcl"/>
+  <File Type="RDS-RDS" Name="MyFIFO_vio_wrapper.vds"/>
+  <File Type="RDS-UTIL" Name="MyFIFO_vio_wrapper_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="MyFIFO_vio_wrapper_utilization_synth.pb"/>
+  <File Type="RDS-DCP" Name="MyFIFO_vio_wrapper.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="MyFIFO_vio_wrapper_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="MyFIFO_vio_wrapper_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PPRDIR/src/MyFIFO.v">
@@ -15,9 +18,29 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/bd/design_1/design_1.bd">
+    <File Path="$PPRDIR/src/enable_signals_organiser.v">
       <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/src/FIFO_wrapper.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/block_designs/MyFIFO_vio/MyFIFO_vio.bd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/block_designs/MyFIFO_vio/hdl/MyFIFO_vio_wrapper.v">
+      <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -25,8 +48,7 @@
     </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="MyFIFO"/>
-      <Option Name="TopAutoSet" Val="TRUE"/>
+      <Option Name="TopModule" Val="MyFIFO_vio_wrapper"/>
     </Config>
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
@@ -51,4 +73,6 @@
     <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
     <Step Id="synth_design"/>
   </Strategy>
+  <BlockFileSet Type="BlockSrcs" Name="MyFIFO_vio_FIFO_wrapper_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="MyFIFO_vio_vio_0_0"/>
 </GenRun>

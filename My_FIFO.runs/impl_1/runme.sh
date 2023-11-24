@@ -42,6 +42,6 @@ EAStep()
 
 # pre-commands:
 /bin/touch .init_design.begin.rst
-EAStep vivado -log FIFO_wrapped_VIO_wrapper.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source FIFO_wrapped_VIO_wrapper.tcl -notrace
+EAStep vivado -log MyFIFO_vio_wrapper.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source MyFIFO_vio_wrapper.tcl -notrace
 
 

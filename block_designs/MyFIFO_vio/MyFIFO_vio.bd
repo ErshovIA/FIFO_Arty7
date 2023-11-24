@@ -9,8 +9,8 @@
       "validated": "true"
     },
     "design_tree": {
-      "FIFO_wrapper_0": "",
-      "vio_0": ""
+      "vio_0": "",
+      "FIFO_wrapper_0": ""
     },
     "ports": {
       "clk_0": {
@@ -37,6 +37,18 @@
       }
     },
     "components": {
+      "vio_0": {
+        "vlnv": "xilinx.com:ip:vio:3.0",
+        "xci_name": "MyFIFO_vio_vio_0_0",
+        "parameters": {
+          "C_NUM_PROBE_OUT": {
+            "value": "4"
+          },
+          "C_PROBE_OUT3_WIDTH": {
+            "value": "32"
+          }
+        }
+      },
       "FIFO_wrapper_0": {
         "vlnv": "xilinx.com:module_ref:FIFO_wrapper:1.0",
         "xci_name": "MyFIFO_vio_FIFO_wrapper_0_0",
@@ -81,18 +93,6 @@
             "right": "0"
           }
         }
-      },
-      "vio_0": {
-        "vlnv": "xilinx.com:ip:vio:3.0",
-        "xci_name": "MyFIFO_vio_vio_0_0",
-        "parameters": {
-          "C_NUM_PROBE_OUT": {
-            "value": "4"
-          },
-          "C_PROBE_OUT3_WIDTH": {
-            "value": "32"
-          }
-        }
       }
     },
     "nets": {
@@ -129,8 +129,8 @@
       "clk_0_1": {
         "ports": [
           "clk_0",
-          "FIFO_wrapper_0/clk",
-          "vio_0/clk"
+          "vio_0/clk",
+          "FIFO_wrapper_0/clk"
         ]
       }
     }

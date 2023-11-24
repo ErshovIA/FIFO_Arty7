@@ -37,15 +37,21 @@ module MyFIFO(  input wire clk,                                 //
     genvar i;
     
     generate                                                        // сдвигаем все заполненные регистры на один влево
-        for (i=0; i < `FIFO_VOLUME-1; i=i+1) begin                  // нельзя i < `FIFO_VOLUME из-за [i+1]
+        for (i=0; i < `FIFO_VOLUME; i=i+1) begin                  // нельзя i < `FIFO_VOLUME из-за [i+1]
             always @(posedge clk) begin                           
                 if (rst) begin
                     FIFO_array[i] <= `BIT_DEPTH'd0;
                 end
                 else begin                                          // !rst
                     if (enable_read) begin
-                        if (FIFO_tail_index > i+1)
+                        if (FIFO_tail_index > i+1)                  // сдвиг
                             FIFO_array[i] <= FIFO_array[i+1];
+                        else if ((FIFO_tail_index==i+1) & enable_write)     // запись & чтение из непустой очереди
+                            FIFO_array[i] <= value_to_write;
+                        else if ((FIFO_tail_index == `FIFO_VOLUME_BIT_DEPTH'd0) & i==0)
+                            FIFO_array[i] <= value_to_write;
+                        else
+                            FIFO_array[i] <= `BIT_DEPTH'd0;
                     end     // enable_read
                 end
             end // always   
@@ -53,31 +59,26 @@ module MyFIFO(  input wire clk,                                 //
          
     endgenerate
     
-    
+    always @(posedge rst) begin
+        if (rst) begin
+            FIFO_tail_index <= `FIFO_VOLUME_BIT_DEPTH'd0;
+            value_to_read <= `BIT_DEPTH'd0; 
+        end            
+    end
     
     
  // отдельно - изменения индекса, ресет всех переменных, кроме Array, чтение и запись
   
-    always @(posedge clk, posedge rst) begin                // reset      
-        if (rst) begin
-            FIFO_array[`FIFO_VOLUME-1] <= `BIT_DEPTH'd0;        // отдельно обнуляем последний член массива
-            FIFO_tail_index <= `FIFO_VOLUME_BIT_DEPTH'd0;
-            value_to_read <= `BIT_DEPTH'd0;
-        end 
-        else begin                                          // !reset
+    always @(posedge clk) begin                // reset      
+        if (!rst) begin                                          // !reset
             if (enable_read) begin
                 value_to_read <= FIFO_array[0];             // непосредственно чтение из головы очереди
                 if (enable_write) begin
-                    if (FIFO_tail_index != 0)
-                        FIFO_array[FIFO_tail_index-1] <= value_to_write;
-                    else begin
-                        FIFO_array[0] <= value_to_write;
-                        FIFO_tail_index <= FIFO_tail_index + 1;
-                    end
+                    if (FIFO_tail_index == `FIFO_VOLUME_BIT_DEPTH'd0)
+                        FIFO_tail_index <= FIFO_tail_index + `FIFO_VOLUME_BIT_DEPTH'd1;
                 end                 // enable_write
                 else begin          // !enable_write
                     if (FIFO_tail_index != 0) begin
-                        FIFO_array[FIFO_tail_index-1] <= `BIT_DEPTH'd0;
                         FIFO_tail_index <= FIFO_tail_index - `FIFO_VOLUME_BIT_DEPTH'd1;
                     end
                 end                 // !enable_write                     

@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2019.1 (64-bit)
+# SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+# IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+# Start of session at: Fri Nov 24 12:01:53 2023
+# Process ID: 14268
+# Current directory: D:/Games/Verilog/11_sem/FIFO_Arty7/My_FIFO.runs/MyFIFO_vio_FIFO_wrapper_0_0_synth_1
+# Command line: vivado.exe -log MyFIFO_vio_FIFO_wrapper_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source MyFIFO_vio_FIFO_wrapper_0_0.tcl
+# Log file: D:/Games/Verilog/11_sem/FIFO_Arty7/My_FIFO.runs/MyFIFO_vio_FIFO_wrapper_0_0_synth_1/MyFIFO_vio_FIFO_wrapper_0_0.vds
+# Journal file: D:/Games/Verilog/11_sem/FIFO_Arty7/My_FIFO.runs/MyFIFO_vio_FIFO_wrapper_0_0_synth_1\vivado.jou
+#-----------------------------------------------------------
+source MyFIFO_vio_FIFO_wrapper_0_0.tcl -notrace
