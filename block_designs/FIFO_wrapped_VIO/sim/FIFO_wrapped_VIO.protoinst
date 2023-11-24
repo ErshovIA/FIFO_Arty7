@@ -1,0 +1,9 @@
+{
+	"version": "1.0",
+	"modules": {
+		"FIFO_wrapped_VIO": {
+			"proto_instances": {
+			}
+		}
+	}
+}

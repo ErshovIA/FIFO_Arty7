@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<Runs Version="1" Minor="0">
+	<Run Id="FIFO_wrapped_VIO_vio_0_0_synth_1" LaunchDir="D:/Games/Verilog/11_sem/FIFO_Arty7/My_FIFO.runs/FIFO_wrapped_VIO_vio_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="FIFO_wrapped_VIO_FIFO_wrapper_0_0_synth_1" LaunchDir="D:/Games/Verilog/11_sem/FIFO_Arty7/My_FIFO.runs/FIFO_wrapped_VIO_FIFO_wrapper_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="synth_1" LaunchDir="D:/Games/Verilog/11_sem/FIFO_Arty7/My_FIFO.runs/synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado">
+		<Parent Id="FIFO_wrapped_VIO_vio_0_0_synth_1"/>
+		<Parent Id="FIFO_wrapped_VIO_FIFO_wrapper_0_0_synth_1"/>
+	</Run>
+	<Parameters>
+		<Parameter Name="runs.monitorLSFJobs" Val="true" Type="bool"/>
+	</Parameters>
+</Runs>
+
