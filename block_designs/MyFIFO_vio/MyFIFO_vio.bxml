@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="37">
   <CompositeFile CompositeFileTopName="MyFIFO_vio" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1700816504"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1700816504"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1700816504"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1700816504"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1700920445"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1700920445"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1700920445"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1700920445"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip\MyFIFO_vio_FIFO_wrapper_0_0\MyFIFO_vio_FIFO_wrapper_0_0.xci" Type="IP">
         <Instance HierarchyPath="FIFO_wrapper_0"/>

@@ -6,10 +6,10 @@
 # Block Designs: D:/Games/Verilog/11_sem/FIFO_Arty7/block_designs/MyFIFO_vio/MyFIFO_vio.bd
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==MyFIFO_vio || ORIG_REF_NAME==MyFIFO_vio} -quiet] -quiet
 
-# IP: d:/Games/Verilog/11_sem/FIFO_Arty7/block_designs/MyFIFO_vio/ip/MyFIFO_vio_FIFO_wrapper_0_0/MyFIFO_vio_FIFO_wrapper_0_0.xci
+# IP: D:/Games/Verilog/11_sem/FIFO_Arty7/block_designs/MyFIFO_vio/ip/MyFIFO_vio_FIFO_wrapper_0_0/MyFIFO_vio_FIFO_wrapper_0_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==MyFIFO_vio_FIFO_wrapper_0_0 || ORIG_REF_NAME==MyFIFO_vio_FIFO_wrapper_0_0} -quiet] -quiet
 
-# IP: d:/Games/Verilog/11_sem/FIFO_Arty7/block_designs/MyFIFO_vio/ip/MyFIFO_vio_vio_0_0/MyFIFO_vio_vio_0_0.xci
+# IP: D:/Games/Verilog/11_sem/FIFO_Arty7/block_designs/MyFIFO_vio/ip/MyFIFO_vio_vio_0_0/MyFIFO_vio_vio_0_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==MyFIFO_vio_vio_0_0 || ORIG_REF_NAME==MyFIFO_vio_vio_0_0} -quiet] -quiet
 
 # XDC: D:/Games/Verilog/11_sem/FIFO_Arty7/block_designs/MyFIFO_vio/MyFIFO_vio_ooc.xdc

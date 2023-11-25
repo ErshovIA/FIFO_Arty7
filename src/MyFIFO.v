@@ -34,48 +34,76 @@ module MyFIFO(  input wire clk,                                 //
     reg [`FIFO_VOLUME_BIT_DEPTH-1:0]    FIFO_tail_index;                // индекс, по которому можно записывать. = 0 для пустой очереди 
     
     
-    genvar i;
-    
+    genvar i;   
     generate                                                        // сдвигаем все заполненные регистры на один влево
-        for (i=0; i < `FIFO_VOLUME; i=i+1) begin                  // нельзя i < `FIFO_VOLUME из-за [i+1]
+        for (i=1; i < `FIFO_VOLUME; i=i+1) begin                  // [0] обрабатываем отдельно из-за особенности записи & чтения в [0] элемент
             always @(posedge clk) begin                           
                 if (rst) begin
                     FIFO_array[i] <= `BIT_DEPTH'd0;
                 end
                 else begin                                          // !rst
                     if (enable_read) begin
-                        if (FIFO_tail_index > i+1)                  // сдвиг
-                            FIFO_array[i] <= FIFO_array[i+1];
-                        else if ((FIFO_tail_index==i+1) & enable_write)     // запись & чтение из непустой очереди
-                            FIFO_array[i] <= value_to_write;
-                        else if ((FIFO_tail_index == `FIFO_VOLUME_BIT_DEPTH'd0) & i==0)
-                            FIFO_array[i] <= value_to_write;
-                        else
-                            FIFO_array[i] <= `BIT_DEPTH'd0;
+                        if (FIFO_tail_index > i+1)
+                            FIFO_array[i] <= FIFO_array[i+1];       // сдвиг при чтении
+                        if (enable_write) begin
+                            if (FIFO_tail_index == i+1)
+                                FIFO_array[i] <= value_to_write;    // запись в последний при одновременной записи и чтении
+                        end
+                        else begin      // !enable_write
+                            if (FIFO_tail_index == i+1)
+                                FIFO_array[i] <= `BIT_DEPTH'd0;     // обнуление последнего в очереди при сдвиге без записи
+                        end                            
                     end     // enable_read
+                    else begin      // !enable_read
+                        if (enable_write & (FIFO_tail_index == i))
+                            FIFO_array[i] <= value_to_write;
+                    end //!enable_read
                 end
             end // always   
-        end //for
-         
+        end //for    
     endgenerate
     
-    always @(posedge rst) begin
+    
+    always @(posedge clk) begin        // отдельно для нулевого элемента очереди                   
+        if (rst) begin
+            FIFO_array[0] <= `BIT_DEPTH'd0;
+        end
+        else begin                                          // !rst
+            if (enable_read) begin
+                if (FIFO_tail_index > 1)
+                    FIFO_array[0] <= FIFO_array[1];       // сдвиг при чтении
+                if (enable_write) begin
+                    if (FIFO_tail_index <= 1)                  // записываем в 0 элемент одновременно с чтением, если tail == 0|1 
+                        FIFO_array[0] <= value_to_write;    // запись в последний при одновременной записи и чтении
+                end
+                else begin      // !enable_write
+                    if (FIFO_tail_index == 1)
+                        FIFO_array[0] <= `BIT_DEPTH'd0;     // обнуление последнего в очереди при сдвиге без записи
+                end                            
+            end     // enable_read
+            else begin      // !enable_read
+                if (enable_write & (FIFO_tail_index == 0))
+                    FIFO_array[0] <= value_to_write;
+            end //!enable_read
+        end
+    end // always  
+    
+    
+    
+ // отдельно - изменения индекса, чтение в выходной буффер
+  
+    always @(posedge clk, posedge rst) begin                // reset      
         if (rst) begin
             FIFO_tail_index <= `FIFO_VOLUME_BIT_DEPTH'd0;
-            value_to_read <= `BIT_DEPTH'd0; 
-        end            
-    end
-    
-    
- // отдельно - изменения индекса, ресет всех переменных, кроме Array, чтение и запись
-  
-    always @(posedge clk) begin                // reset      
-        if (!rst) begin                                          // !reset
+            value_to_read <= `BIT_DEPTH'd0;
+        end 
+        else begin                                          // !reset
             if (enable_read) begin
                 value_to_read <= FIFO_array[0];             // непосредственно чтение из головы очереди
                 if (enable_write) begin
-                    if (FIFO_tail_index == `FIFO_VOLUME_BIT_DEPTH'd0)
-                        FIFO_tail_index <= FIFO_tail_index + `FIFO_VOLUME_BIT_DEPTH'd1;
+                    if (FIFO_tail_index == 0) begin
+                        FIFO_tail_index <= FIFO_tail_index + 1;
+                    end
                 end                 // enable_write
                 else begin          // !enable_write
                     if (FIFO_tail_index != 0) begin
@@ -86,15 +114,12 @@ module MyFIFO(  input wire clk,                                 //
             else begin              // !enable_read
                 if (enable_write) begin
                     if (FIFO_tail_index < `FIFO_VOLUME) begin
-                        FIFO_array[FIFO_tail_index] <= value_to_write;
                         FIFO_tail_index = FIFO_tail_index + `FIFO_VOLUME_BIT_DEPTH'd1;
                     end
                 end                 // enable_write
             end                     // !enable_read
         end
-    end                                                    
-    
-    
-  
+    end      // always                                              
+
     
 endmodule

@@ -22,7 +22,7 @@
 
 module FIFO_test;
     
-    reg clk, rst;
+reg clk, rst;
     reg enable_read, enable_write;
     reg [`BIT_DEPTH-1:0] value_to_write;
     wire [`BIT_DEPTH-1:0] value_to_read;
@@ -57,31 +57,69 @@ module FIFO_test;
 		enable_read = 1'd0;
 		enable_write = 1'd0;
 		value_to_write = `BIT_DEPTH'd0;
-		
-		rst = 1'd1;
-		#10;
 		rst = 1'd0;
-		#10;                              // RESET
-		
-		value_to_write = `BIT_DEPTH'd7;
-		enable_write = 1'd1;
 		#2;
-		enable_write = 1'd0;
-		#10;                              // WRITE
-		enable_read = 1'd1;
-		#2;                               // READ
+		rst = 1'd1;
+		#2;
+		rst = 1'd0;
+		#2;                              // RESET
+		
+		enable_read = 1'b1;               // чтение из пустого
+		#2;
+		
+		enable_read = 1'b1;               // чтение и запись в пустой
+		enable_write = 1'b1;
+		value_to_write = `BIT_DEPTH'd7;
+		#2;
+		
+		enable_read = 1'b1;               // чтение и запись
+		enable_write = 1'b1;
+		value_to_write = `BIT_DEPTH'd8;
+		#2;
+		
+		enable_read = 1'b0;               // запись 
+		value_to_write = `BIT_DEPTH'd9;
+		#2;
+		
+		value_to_write = `BIT_DEPTH'd10;
+		#2;
+		
+		value_to_write = `BIT_DEPTH'd11;
+		#2;
 		
 		value_to_write = `BIT_DEPTH'd12;
-		enable_write = 1'd1;
-		enable_read = 1'd1;
 		#2;
-		enable_write = 1'd0;
-		enable_read = 1'd0;               // WRITE & READ 
 		
+		value_to_write = `BIT_DEPTH'd13;
+		#2;
 		
-		#10;
+		value_to_write = `BIT_DEPTH'd14;
+		#2;
+		
+		value_to_write = `BIT_DEPTH'd15;
+		#2;
+		
+		value_to_write = `BIT_DEPTH'd16;
+		#2;
+		
+		value_to_write = `BIT_DEPTH'd17;
+		#2;
+		
+		enable_read = 1'b1;               // чтение и запись
+		enable_write = 1'b1;
+		value_to_write = `BIT_DEPTH'd18;
+		#2;
+		
+		enable_read = 1'b1;               // чтение и запись
+		enable_write = 1'b1;
+		value_to_write = `BIT_DEPTH'd19;
+		#2;
+		
+		enable_write = 1'b0;              // чтение
+		#18;
+		
+
 		$stop;
-		
 	end
 		
     initial 
@@ -89,6 +127,5 @@ module FIFO_test;
 
     //always @ (posedge clk)
 	//$display ("clk=%d, pwm_inp=%d, pwm_cnt=%d, LED=%d", clk, uut.pwm_inp, uut.pwm_cnt, LED);
-
 
 endmodule

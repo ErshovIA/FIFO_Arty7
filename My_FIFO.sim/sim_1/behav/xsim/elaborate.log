@@ -3,7 +3,7 @@ Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
 Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto 5e3a79240485403ea42e061804fe2584 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot FIFO_wrapper_test_behav xil_defaultlib.FIFO_wrapper_test xil_defaultlib.glbl -log elaborate.log 
 Using 2 slave threads.
 Starting static elaboration
-WARNING: [VRFC 10-3705] select index 7 into 'FIFO_array' is out of bounds [D:/Games/Verilog/11_sem/FIFO_Arty7/src/MyFIFO.v:48]
+WARNING: [VRFC 10-3705] select index 7 into 'FIFO_array' is out of bounds [D:/Games/Verilog/11_sem/FIFO_Arty7/src/MyFIFO.v:47]
 Completed static elaboration
 Starting simulation data flow analysis
 Completed simulation data flow analysis

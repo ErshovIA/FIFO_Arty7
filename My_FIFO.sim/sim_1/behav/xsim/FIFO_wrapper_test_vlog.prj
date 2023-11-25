@@ -1,5 +1,5 @@
 # compile verilog/system verilog design source files
-verilog xil_defaultlib  \
+verilog xil_defaultlib  --include "../../../../block_designs/MyFIFO_vio/ipshared/9ba5/hdl" \
 "../../../../src/FIFO_wrapper.v" \
 "../../../../src/MyFIFO.v" \
 "../../../../src/enable_signals_organiser.v" \
