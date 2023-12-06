@@ -33,6 +33,7 @@ module MyFIFO(  input wire clk,                                 //
     reg [`BIT_DEPTH-1:0]                FIFO_array [`FIFO_VOLUME-1:0];
     reg [`FIFO_VOLUME_BIT_DEPTH-1:0]    FIFO_tail_index;                // индекс, по которому можно записывать. = 0 для пустой очереди 
     
+
     
     genvar i;   
     generate                                                        // сдвигаем все заполненные регистры на один влево

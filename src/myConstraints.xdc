@@ -205,7 +205,7 @@ create_clock -period 10.000 -name sys_clk_pin -waveform {0.000 5.000} -add [get_
 #set_property -dict { PACKAGE_PIN L14   IOSTANDARD LVCMOS33 } [get_ports { qspi_dq[2] }]; #IO_L2P_T0_D02_14 Sch=qspi_dq[2]
 #set_property -dict { PACKAGE_PIN M14   IOSTANDARD LVCMOS33 } [get_ports { qspi_dq[3] }]; #IO_L2N_T0_D03_14 Sch=qspi_dq[3]
 
-## Power Measurements 
+## Power Measurements
 #set_property -dict { PACKAGE_PIN B17   IOSTANDARD LVCMOS33     } [get_ports { vsnsvu_n }]; #IO_L7N_T1_AD2N_15 Sch=ad_n[2]
 #set_property -dict { PACKAGE_PIN B16   IOSTANDARD LVCMOS33     } [get_ports { vsnsvu_p }]; #IO_L7P_T1_AD2P_15 Sch=ad_p[2]
 #set_property -dict { PACKAGE_PIN B12   IOSTANDARD LVCMOS33     } [get_ports { vsns5v0_n }]; #IO_L3N_T0_DQS_AD1N_15 Sch=ad_n[1]
@@ -214,3 +214,38 @@ create_clock -period 10.000 -name sys_clk_pin -waveform {0.000 5.000} -add [get_
 #set_property -dict { PACKAGE_PIN F13   IOSTANDARD LVCMOS33     } [get_ports { isns5v0_p }]; #IO_L5P_T0_AD9P_15 Sch=ad_p[9]
 #set_property -dict { PACKAGE_PIN A16   IOSTANDARD LVCMOS33     } [get_ports { isns0v95_n }]; #IO_L8N_T1_AD10N_15 Sch=ad_n[10]
 #set_property -dict { PACKAGE_PIN A15   IOSTANDARD LVCMOS33     } [get_ports { isns0v95_p }]; #IO_L8P_T1_AD10P_15 Sch=ad_p[10]
+
+create_debug_core u_ila_0 ila
+set_property ALL_PROBE_SAME_MU true [get_debug_cores u_ila_0]
+set_property ALL_PROBE_SAME_MU_CNT 4 [get_debug_cores u_ila_0]
+set_property C_ADV_TRIGGER true [get_debug_cores u_ila_0]
+set_property C_DATA_DEPTH 1024 [get_debug_cores u_ila_0]
+set_property C_EN_STRG_QUAL false [get_debug_cores u_ila_0]
+set_property C_INPUT_PIPE_STAGES 0 [get_debug_cores u_ila_0]
+set_property C_TRIGIN_EN false [get_debug_cores u_ila_0]
+set_property C_TRIGOUT_EN false [get_debug_cores u_ila_0]
+set_property port_width 1 [get_debug_ports u_ila_0/clk]
+connect_debug_port u_ila_0/clk [get_nets [list clk_0_IBUF]]
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe0]
+set_property port_width 32 [get_debug_ports u_ila_0/probe0]
+connect_debug_port u_ila_0/probe0 [get_nets [list {MyFIFO_bdesign_i/MyFIFO_0/value_to_read[0]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_read[1]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_read[2]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_read[3]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_read[4]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_read[5]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_read[6]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_read[7]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_read[8]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_read[9]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_read[10]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_read[11]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_read[12]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_read[13]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_read[14]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_read[15]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_read[16]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_read[17]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_read[18]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_read[19]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_read[20]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_read[21]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_read[22]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_read[23]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_read[24]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_read[25]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_read[26]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_read[27]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_read[28]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_read[29]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_read[30]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_read[31]}]]
+create_debug_port u_ila_0 probe
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe1]
+set_property port_width 32 [get_debug_ports u_ila_0/probe1]
+connect_debug_port u_ila_0/probe1 [get_nets [list {MyFIFO_bdesign_i/MyFIFO_0/value_to_write[0]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_write[1]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_write[2]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_write[3]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_write[4]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_write[5]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_write[6]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_write[7]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_write[8]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_write[9]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_write[10]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_write[11]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_write[12]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_write[13]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_write[14]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_write[15]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_write[16]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_write[17]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_write[18]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_write[19]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_write[20]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_write[21]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_write[22]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_write[23]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_write[24]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_write[25]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_write[26]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_write[27]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_write[28]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_write[29]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_write[30]} {MyFIFO_bdesign_i/MyFIFO_0/value_to_write[31]}]]
+create_debug_port u_ila_0 probe
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe2]
+set_property port_width 1 [get_debug_ports u_ila_0/probe2]
+connect_debug_port u_ila_0/probe2 [get_nets [list MyFIFO_bdesign_i/MyFIFO_0/rst]]
+create_debug_port u_ila_0 probe
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe3]
+set_property port_width 1 [get_debug_ports u_ila_0/probe3]
+connect_debug_port u_ila_0/probe3 [get_nets [list MyFIFO_bdesign_i/MyFIFO_0/enable_write]]
+create_debug_port u_ila_0 probe
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe4]
+set_property port_width 1 [get_debug_ports u_ila_0/probe4]
+connect_debug_port u_ila_0/probe4 [get_nets [list MyFIFO_bdesign_i/MyFIFO_0/enable_read]]
+set_property C_CLK_INPUT_FREQ_HZ 300000000 [get_debug_cores dbg_hub]
+set_property C_ENABLE_CLK_DIVIDER false [get_debug_cores dbg_hub]
+set_property C_USER_SCAN_CHAIN 1 [get_debug_cores dbg_hub]
+connect_debug_port dbg_hub/clk [get_nets clk_0_IBUF]
