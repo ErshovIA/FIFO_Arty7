@@ -62,7 +62,7 @@ reg clk, rst;
 		rst = 1'd1;
 		#2;
 		rst = 1'd0;
-		#2;                              // RESET
+		#3;                              // RESET
 		
 		enable_read = 1'b1;               // чтение из пустого
 		#2;

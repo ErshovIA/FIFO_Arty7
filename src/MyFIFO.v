@@ -19,7 +19,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 `define FIFO_VOLUME 7               // Размер очереди
-`define BIT_DEPTH 32                // Разрядность
+`define BIT_DEPTH 8                // Разрядность
 `define FIFO_VOLUME_BIT_DEPTH 3     // Разрядность числа, хранящего индекс конца очереди
 
 module MyFIFO(  input wire clk,                                 // 
