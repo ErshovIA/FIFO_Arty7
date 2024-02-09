@@ -33,6 +33,14 @@ module MyFIFO(  input wire clk,                                 //
     reg [`BIT_DEPTH-1:0]                FIFO_array [`FIFO_VOLUME-1:0];
     reg [`FIFO_VOLUME_BIT_DEPTH-1:0]    FIFO_tail_index;                // индекс, по которому можно записывать. = 0 для пустой очереди 
     
+    (*mark_debug = "true"*) wire [`FIFO_VOLUME_BIT_DEPTH-1:0] FIFO_tail_index_probe = FIFO_tail_index;
+    (*mark_debug = "true"*) wire [`BIT_DEPTH-1:0] FIFO_array_probe_0 = FIFO_array[0];
+    (*mark_debug = "true"*) wire [`BIT_DEPTH-1:0] FIFO_array_probe_1 = FIFO_array[1];
+    (*mark_debug = "true"*) wire [`BIT_DEPTH-1:0] FIFO_array_probe_2 = FIFO_array[2];
+    (*mark_debug = "true"*) wire [`BIT_DEPTH-1:0] FIFO_array_probe_3 = FIFO_array[3];
+    (*mark_debug = "true"*) wire [`BIT_DEPTH-1:0] FIFO_array_probe_4 = FIFO_array[4];
+    (*mark_debug = "true"*) wire [`BIT_DEPTH-1:0] FIFO_array_probe_5 = FIFO_array[5];
+    (*mark_debug = "true"*) wire [`BIT_DEPTH-1:0] FIFO_array_probe_6 = FIFO_array[6];
 
     
     genvar i;   

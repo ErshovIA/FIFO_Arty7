@@ -28,7 +28,7 @@ module Top_FIFO_UART(
     input  wire         rx
     );
     
-    wire rst_n = !rst;
+    (*mark_debug = "true"*) wire rst_n = !rst;
     
     wire tx_start;
     wire [7:0] tx_data;

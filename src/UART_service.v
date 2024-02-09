@@ -44,6 +44,7 @@ module UART_service(
     localparam RETURN = 3'd5;         // возвращаю то, что прочел из очереди
     
     reg [2:0] fsm_state;                  // Состояние конечного автомата
+    (*mark_debug = "true"*) wire [2:0] service_fsm_probe = fsm_state; 
     
     
     reg [7:0] instruction;             // 
