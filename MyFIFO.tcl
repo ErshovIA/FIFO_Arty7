@@ -17,25 +17,21 @@ add_files -fileset sim_1 -norecurse {./src/FIFO_test.v ./src/uart_top_test.v ./s
 update_compile_order -fileset sim_1
 
 
-# Constraints
-# add_files -fileset constrs_1 -norecurse ./src/myConstraints.xdc
-
-
 # Файл констрэйнтов для A7-35 полный:
 add_files -fileset constrs_1 -norecurse ./src/Arty-A7-35-Master_costraints.xdc
 
 
 # Синтез
-#launch_runs synth_1 -jobs 2
-#wait_on_run synth_1
+launch_runs synth_1 -jobs 2
+wait_on_run synth_1
 #puts "----------SYNTH COMPLETED SUCCESS-----------"
-#open_run synth_1 -name synth_1
+open_run synth_1 -name synth_1
 
 
 
 # Имплементация
-#launch_runs impl_1
-#wait_on_run impl_1
+launch_runs impl_1
+wait_on_run impl_1
 #puts "----------IMPL1 COMPLETED SUCCESS-----------"
 
 # Генерация битстрим
